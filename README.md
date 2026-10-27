@@ -57,16 +57,3 @@ Section 1.4 explains that the final-term Android Studio project will continue fr
 The app stays at four screens and two local tables, which matches the topics from the first eight weeks: Kotlin, Fragments, Navigation Component, RecyclerView, Room, and Git. DashboardFragment is the start screen, because a student needs a summary before an empty form. AssignmentListFragment shows the coursework, AssignmentFormFragment opens only from Add or Edit, and ExamScheduleFragment keeps the short exam form on the same screen as the exam list. The bottom bar switches only among Dashboard, Assignments, and Exams.
 
 Room will create one SQLite file, `studymate_database`, the first time the app opens it. The `assignments` table stores the title, subject, description, due date, priority, and whether the work is pending or completed. The `exams` table stores the subject, date, time, and location. Saving a row, reading it back into a RecyclerView, marking it completed, and deleting it only after a confirmation all follow that same path. A third table is not part of this version, because the app does not store accounts or a separate subject list.
-
-## Later, when the final-term app is ready
-
-This is a future plan. The Android app is not in the repository yet.
-
-1. Build and test the app in Android Studio.
-2. Add the app to `anupsubedi968-tech/StudyMate`. Do not overwrite `CampusEquipmentRentalApp` or `NavigationPractice`, and do not delete the planning files.
-3. Update this README with how to open and run the app.
-4. Add an Android `.gitignore` so build folders are not uploaded.
-5. Check that no passwords, keys, or other secrets are included.
-6. Commit and push, then open the repository page and confirm the app files are there.
-
-After those steps, the Android Studio project will sit in this same repository beside the planning files. `CampusEquipmentRentalApp` and `NavigationPractice` stay unchanged.
