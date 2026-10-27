@@ -70,26 +70,3 @@ This is a future plan. The Android app is not in the repository yet.
 6. Commit and push, then open the repository page and confirm the app files are there.
 
 After those steps, the Android Studio project will sit in this same repository beside the planning files. `CampusEquipmentRentalApp` and `NavigationPractice` stay unchanged.
-
-## Before you submit the midterm
-
-- The document date is 2026-10-27. Change it if you submit on a different day.
-- The repository URL is https://github.com/anupsubedi968-tech/StudyMate.
-- Read the AI-use paragraph at the end of the HTML file and edit it if you want different wording.
-
-The assignment brief lists the deadline as **31 October 2026, 23:59**, and it labels that date as a proposed schedule. Confirm the real deadline with your professor or the course page.
-
-## How to make the PDF
-
-1. Open `StudyMate_Midterm.html` in Chrome or another browser.
-2. Check that your name, student ID, course, and repository URL are correct.
-3. Use Print, set the paper size to A4, set margins to None, and turn on background graphics.
-4. Save as PDF.
-
-Use this file name:
-
-`Midterm_2025621046_SubediAnup.pdf`
-
-Do not submit this README in place of the PDF unless your professor asks for it.
-
-Cursor (Grok) drafted this plan from the StudyMate idea and the course template, then uploaded these planning files. The Android app was not built or tested.
