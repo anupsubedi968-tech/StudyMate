@@ -22,7 +22,7 @@
       color: #1c2430;
       font-family: "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
       font-size: 11pt;
-      line-height: 1.45;
+      line-height: 1.38;
     }
 
     .page {
@@ -66,7 +66,7 @@
       margin: 3.5mm 0 1.5mm;
     }
 
-    p { margin: 0 0 2.4mm; }
+    p { margin: 0 0 1.8mm; }
 
     .ko {
       color: #5c6b7a;
@@ -91,7 +91,7 @@
 
     th, td {
       border: 1px solid #c5d0dc;
-      padding: 1.6mm 2.2mm;
+      padding: 1.3mm 2mm;
       vertical-align: top;
       text-align: left;
     }
@@ -542,32 +542,26 @@
   <h2>1. 앱 소개 및 개발 목적 / Project Overview</h2>
 
   <h3>1.1 앱을 한 문장으로 소개 / One-sentence description</h3>
-  <p>StudyMate is an Android app that lets a university student record assignments and exams, then see what is still pending and what is coming next.</p>
+  <p>StudyMate is an Android app that helps one university student keep assignments, due dates, completion status, and exam details together, then see what is still unfinished.</p>
 
   <h3>1.2 해결하려는 문제 / Problem to solve</h3>
-  <p>During a semester, due dates and exam details are easy to lose. A student may write an assignment in a notebook, keep another in a chat message, and remember an exam room only from a slide. When those notes are separate, a deadline can pass without a reminder in one place.</p>
-  <p>StudyMate is a plan to put that information in one app on the student’s own phone. The student can add an assignment, see it in a list, mark it completed when the work is done, and keep exam date, time, and location beside the coursework. The phone stores the data locally, so the lists are still there the next time the app opens.</p>
+  <p>During a semester, due dates and exam details are easy to lose, because one assignment may sit in a notebook, another in a chat message, and an exam room may be remembered only from a slide. When those notes stay separate, nothing shows the unfinished work and the next exam together, so a deadline can pass without a clear reminder.</p>
+  <p>StudyMate brings the assignment and the exam into one app on the student’s own phone. The student adds the work, sees it in a list, marks it completed when it is finished, and keeps the exam date, time, and location beside the coursework. The phone stores each row locally, so the same lists are still there the next time the app opens.</p>
 
   <h3>1.3 대상 사용자 및 이용 상황 / Target users and use cases</h3>
-  <p>The target user is a university student who takes several courses and wants a simple way to manage coursework and upcoming deadlines. The first version is for one person using their own phone.</p>
+  <p>The target user is a university student who takes several courses and wants one simple place on their own phone for coursework and upcoming deadlines. The first version stores every row in a Room database on that phone, and sharing lists with classmates can wait for a later version if there is time in the final project.</p>
   <ul>
     <li>After class, the student adds an assignment with its subject, due date, and priority.</li>
     <li>In the morning, the student opens the dashboard to see how many assignments are pending and which deadlines are closest.</li>
     <li>When the work is finished, the student marks that assignment completed. The list and the counts update.</li>
     <li>Before exam week, the student checks the exam screen for the subject, date, time, and room.</li>
   </ul>
-  <div class="note">
-    The first version stores every row in a Room database on the phone. Accounts and sharing with classmates can wait for a later version, if there is time in the final project.
-  </div>
-
   <h3>Planned scope for a student project</h3>
-  <p>The midterm only asks for the plan. The final-term project will continue from this design. The app will have four screens, two database tables, and the five features in the next section. That size is realistic for one student who has studied Kotlin, Fragments, Navigation, RecyclerView, Room, and Git.</p>
+  <p>This midterm is the plan, and the final-term project will continue from it. The app stays at four screens, two database tables, and the five features in the next section, which is a realistic size for one student who has studied Kotlin, Fragments, Navigation, RecyclerView, Room, and Git.</p>
 
   <h3>1.4 Final-term project and GitHub</h3>
-  <p>I will build the Android Studio project from this plan. When the app is complete and tested, I will push it to my existing GitHub account, <strong>anupsubedi968-tech</strong> (<span class="mono">https://github.com/anupsubedi968-tech</span>).</p>
-  <p>I checked that account on 27 October 2026. It already contained <span class="mono">CampusEquipmentRentalApp</span> and <span class="mono">NavigationPractice</span>. Those different projects were left unchanged.</p>
-  <p><strong>StudyMate repository URL:</strong> <span class="mono">https://github.com/anupsubedi968-tech/StudyMate</span></p>
-  <p>This repository now holds the midterm planning files. The Android Studio app is not there yet. After the app is built and tested, I will add that project to this same repository, update <span class="mono">README.md</span>, use an Android <span class="mono">.gitignore</span>, check for secrets, commit, and push. I will not delete the planning files or the other repositories.</p>
+  <p>I will build the Android Studio project from this plan, and when the app is complete and tested I will add it to my existing GitHub account, <strong>anupsubedi968-tech</strong> (<span class="mono">https://github.com/anupsubedi968-tech</span>). On 27 October 2026 that account already contained <span class="mono">CampusEquipmentRentalApp</span> and <span class="mono">NavigationPractice</span>. Those are different projects, so they were left unchanged.</p>
+  <p><strong>StudyMate repository URL:</strong> <span class="mono">https://github.com/anupsubedi968-tech/StudyMate</span>. This repository now holds the midterm planning files, while the Android Studio app is not there yet. After the app is built and tested, I will add the project to this same repository, update <span class="mono">README.md</span>, use an Android <span class="mono">.gitignore</span>, check for secrets, commit, and push, and I will keep the planning files and the other repositories as they are.</p>
 
   <footer class="pf">
     <span>StudyMate · Planning &amp; Design</span>
@@ -624,15 +618,14 @@
   </table>
 
   <h3>2.1 가장 중요한 기능 및 이유 / Most important feature and why</h3>
-  <p>The most important feature is adding an assignment and seeing it again in the list with its due date. That is the main reason to open the app. If save and list work, the student can rely on StudyMate instead of scattered notes. Marking an item completed, the dashboard counts, and the exam list all depend on the same idea: save a row on the phone, then read it back.</p>
-  <p>A simple check belongs with this feature. The title, subject, and due date should be filled in before Save. An empty title would make the list hard to understand.</p>
+  <p>The most important feature is saving an assignment and seeing it again with its due date, because that is the question a student is trying to answer when the app opens: what work is left, and when is it due? Once that path works, marking an item completed, updating the dashboard counts, and showing the exam list all follow the same pattern of writing one row on the phone and reading it back onto the screen. The size is realistic for the final project, since the form collects the title, subject, description, due date, and priority, Room stores that row, and RecyclerView shows it. The title, subject, and due date must be filled in before Save, because an empty title would make the list hard to read.</p>
 
   <h3>2.2 RecyclerView 사용 계획 / List display plan</h3>
-  <p>RecyclerView is the list tool for three screens. The Adapter creates one row layout and fills it for each item from the database.</p>
+  <p>RecyclerView is how the list screens show rows from the database. The Adapter keeps one row layout and fills it for each item, and while the student scrolls, rows that leave the screen can be reused so a longer semester list stays comfortable to read.</p>
   <ul>
-    <li><strong>AssignmentListFragment</strong> is the main list. A row shows title, subject, due date, priority (High, Normal, or Low), and the status Pending or Completed. The row includes Complete, Edit, and Delete. Three filter buttons choose All, Pending, or Completed. Pending means <span class="mono">isCompleted = 0</span>. Completed means <span class="mono">isCompleted = 1</span>.</li>
-    <li><strong>ExamScheduleFragment</strong> lists exams. A row shows subject, exam date, exam time, and location, with Edit and Delete.</li>
-    <li><strong>DashboardFragment</strong> uses a short RecyclerView for the nearest pending assignments, sorted by due date, plus the next exam. An empty list shows “No assignments yet,” and the list refreshes after each save or delete.</li>
+    <li><strong>AssignmentListFragment</strong> is the main list. Each row brings together the title, subject, due date, priority (High, Normal, or Low), and the status Pending or Completed, along with Complete, Edit, and Delete. The filter buttons show All, Pending, or Completed, where pending means <span class="mono">isCompleted = 0</span> and completed means <span class="mono">isCompleted = 1</span>.</li>
+    <li><strong>ExamScheduleFragment</strong> uses the same kind of list for exams, so each row shows the subject, exam date, exam time, and location, with Edit and Delete.</li>
+    <li><strong>DashboardFragment</strong> uses a shorter RecyclerView for the nearest pending assignments, sorted by due date, together with the next exam. When there are no rows yet, the screen shows “No assignments yet.”</li>
   </ul>
 
   <footer class="pf">
@@ -905,8 +898,11 @@
   </ol>
 
   <div class="note">
-    The navigation graph will contain these fragments and the actions above. Passing <span class="mono">assignmentId</span> is the only argument planned for the first version. A new assignment does not send an id. An edited assignment does.
+    The navigation graph will contain these four fragments and the actions above. Passing <span class="mono">assignmentId</span> is the only argument in the first version. Add opens a blank form and sends no id. Edit sends the id so the form can load that row.
   </div>
+
+  <h3>Why the screens are connected this way</h3>
+  <p>The dashboard is the start screen because the first thing a student needs is a summary rather than an empty form, so the assignment form stays off the bottom bar and opens only from Add or Edit. Save or Cancel then returns to the list the student was already using. An exam has only four fields, so its form stays on <strong>ExamScheduleFragment</strong> above the exam list, while an assignment has more fields and therefore uses its own <strong>AssignmentFormFragment</strong>. The system Back button on that form returns to the list without saving, which matches Cancel, and the bottom navigation switches only among Dashboard, Assignments, and Exams.</p>
 
   <footer class="pf">
     <span>StudyMate · Planning &amp; Design</span>
@@ -917,7 +913,7 @@
 <!-- PAGE 7 -->
 <article class="page">
   <h2>5. Room SQLite 데이터베이스 설계 / Database Design</h2>
-  <p>All data stays on the phone in one local SQLite database. Room will create the file the first time the app opens the database. Two tables are enough: one for assignments and one for exams. A third table is not planned, because the app does not store user accounts or a separate subject list.</p>
+  <p>All of the student’s coursework stays on the phone in one local SQLite database, and Room creates that file the first time the app opens the database. Two tables are enough, because assignments and exams are two different lists: one table holds the coursework, and the other holds the exam date, time, and place. A third table is not part of this version, since the app does not store accounts or a separate subject list.</p>
   <p><strong>DB 이름 / Database name:</strong> <span class="mono">studymate_database</span></p>
 
   <p><strong>테이블 이름 / Table 1 name:</strong> <span class="mono">assignments</span></p>
@@ -1046,15 +1042,15 @@
     <tbody>
       <tr>
         <td>Entity</td>
-        <td><span class="mono">Assignment</span> is a Kotlin class with the same fields as the assignments table. <span class="mono">Exam</span> matches the exams table. Each object is one row. The id is the primary key, and Room fills it in when a row is added.</td>
+        <td>An Entity is the Kotlin class for one table. <span class="mono">Assignment</span> has the same fields as <span class="mono">assignments</span>, and <span class="mono">Exam</span> matches <span class="mono">exams</span>. One object is one row. The id is the primary key, and Room fills it in for a new row.</td>
       </tr>
       <tr>
         <td>DAO</td>
-        <td><span class="mono">AssignmentDao</span> inserts, updates, deletes, and reads assignments, and can set <span class="mono">isCompleted</span>. <span class="mono">ExamDao</span> does the same for exams. A fragment calls these functions. Room prepares the SQL.</td>
+        <td>A DAO is the set of actions for one table. <span class="mono">AssignmentDao</span> can insert, update, delete, and read assignments, and it can set <span class="mono">isCompleted</span>. <span class="mono">ExamDao</span> does the same jobs for exams. The fragment calls these functions, and Room prepares the SQL.</td>
       </tr>
       <tr>
         <td>AppDatabase</td>
-        <td><span class="mono">StudyMateDatabase</span> is the Room database class. It lists both entities, provides both DAOs, and uses the file name <span class="mono">studymate_database</span>.</td>
+        <td><span class="mono">StudyMateDatabase</span> is the Room database class. It connects both entities to both DAOs and stores them in the local file <span class="mono">studymate_database</span>. The app asks this class for a DAO when it needs to save or read.</td>
       </tr>
       <tr>
         <td>Repository (optional)</td>
@@ -1066,7 +1062,7 @@
       </tr>
     </tbody>
   </table>
-  <p><strong>데이터 처리 흐름 / Data flow:</strong> Save checks the title, subject, and due date, then <span class="mono">AssignmentDao</span> inserts or updates a row in <span class="mono">assignments</span>. The list reads those rows into the RecyclerView. Complete sets <span class="mono">isCompleted</span> to 1. Delete removes the row after confirmation. Exams use <span class="mono">ExamDao</span> the same way. The dashboard counts pending and completed rows and reads the nearest due dates. The SQLite file stays on the phone after the app closes.</p>
+  <p><strong>데이터 처리 흐름 / Data flow:</strong> When the student taps Save, the form first checks that the title, subject, and due date are filled in, and then <span class="mono">AssignmentDao</span> inserts a new row or updates the existing one in the <span class="mono">assignments</span> table. The list asks the DAO for those rows, and the Adapter places them in the RecyclerView, so the student sees the saved work immediately. Tapping Complete changes <span class="mono">isCompleted</span> from 0 to 1, while Delete removes the row only after the student confirms. Exams follow that same path through <span class="mono">ExamDao</span>, and the dashboard counts the pending and completed rows and reads the nearest due dates. Room keeps the SQLite file on the phone, so closing the app leaves the lists in place and the next launch shows the same rows.</p>
 
   <h2>7. 개발 일정 및 제출 계획 / Development Schedule</h2>
   <p class="small">This schedule is for building the app later, as the final-term project. None of these steps is done yet.</p>
@@ -1101,7 +1097,7 @@
       </tr>
     </tbody>
   </table>
-  <p><strong>Git and GitHub plan.</strong> The planning files are at <span class="mono">https://github.com/anupsubedi968-tech/StudyMate</span>. The Android app is not uploaded yet. After it is built and tested, it will be added to this same repository.</p>
+  <p><strong>Git and GitHub plan.</strong> The planning files are at <span class="mono">https://github.com/anupsubedi968-tech/StudyMate</span>, and after the Android app is built and tested it will be added to this same repository beside the planning document.</p>
 
   <h2>8. 최종 점검 / Submission Checklist</h2>
   <ul class="checks">
@@ -1115,7 +1111,7 @@
     <li>PDF 변환 및 파일명 — export still needed</li>
   </ul>
   <p><strong>제출 파일명 / Filename after export:</strong> <span class="mono">Midterm_2025621046_SubediAnup.pdf</span></p>
-  <p><strong>AI 활용 여부 및 활용 내용 / AI tools used:</strong> Cursor (Grok) drafted this plan, added my details, created the StudyMate repository, and uploaded the planning files. It did not build or test the Android app.</p>
+  <p><strong>AI 활용 여부 및 활용 내용 / AI tools used:</strong> Cursor (Grok) drafted this plan from my idea and uploaded these planning files.</p>
 
   <footer class="pf">
     <span>StudyMate · Planning &amp; Design</span>
