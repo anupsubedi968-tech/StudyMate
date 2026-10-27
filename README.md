@@ -34,7 +34,7 @@ StudyMate is a separate repository. The final-term Android project should be add
 
 | File | Purpose |
 | --- | --- |
-| `StudyMate_Midterm.html` | The planning document. Open it in a browser, review it, then print or save it as PDF. |
+| `StudyMate_Midterm.html` | The planning document. Open it in a browser to read it. |
 | `README.md` | This explanation of the project idea, the GitHub plan, and the document. |
 
 The professor's original brief, blank template, and sample stay in Downloads. They were not copied or changed.
@@ -72,16 +72,3 @@ This is a future plan. The Android app is not in the repository yet.
 - Read the AI-use paragraph at the end of the HTML file and edit it if you want different wording.
 
 The assignment brief lists the deadline as **31 October 2026, 23:59**, and it labels that date as a proposed schedule. Confirm the real deadline with your professor or the course page.
-
-## How to make the PDF
-
-1. Open `StudyMate_Midterm.html` in Chrome or another browser.
-2. Check that your name, student ID, course, and repository URL are correct.
-3. Use Print, set the paper size to A4, set margins to None, and turn on background graphics.
-4. Save as PDF.
-
-Use this file name:
-
-`Midterm_2025621046_SubediAnup.pdf`
-
-Do not submit this README in place of the PDF unless your professor asks for it.
