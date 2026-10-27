@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudyMate — Android Midterm Planning &amp; Design</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 0;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: #d5dbe3;
+      color: #1c2430;
+      font-family: "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+      font-size: 11pt;
+      line-height: 1.45;
+    }
+
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 8mm auto;
+      padding: 12mm 13mm 16mm;
+      background: #fff;
+      position: relative;
+      box-shadow: 0 2px 12px rgba(20, 32, 48, 0.14);
+      page-break-after: always;
+      break-after: page;
+    }
+
+    .pf {
+      position: absolute;
+      left: 13mm;
+      right: 13mm;
+      bottom: 7mm;
+      border-top: 1px solid #d5dde6;
+      padding-top: 2mm;
+      display: flex;
+      justify-content: space-between;
+      font-size: 8.5pt;
+      color: #5c6b7a;
+    }
+
+    h1, h2, h3, p { margin: 0; }
+
+    h2 {
+      font-size: 13.5pt;
+      color: #16375c;
+      border-bottom: 2px solid #16375c;
+      padding-bottom: 1.5mm;
+      margin: 0 0 3.5mm;
+    }
+
+    h3 {
+      font-size: 11.5pt;
+      color: #16375c;
+      margin: 3.5mm 0 1.5mm;
+    }
+
+    p { margin: 0 0 2.4mm; }
+
+    .ko {
+      color: #5c6b7a;
+      font-weight: 500;
+    }
+
+    .ph {
+      background: #fff4d6;
+      border: 1px dashed #b8860b;
+      border-radius: 3px;
+      padding: 0 1.2mm;
+      color: #6a4b00;
+      font-weight: 650;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5mm 0 3mm;
+      font-size: 10pt;
+    }
+
+    th, td {
+      border: 1px solid #c5d0dc;
+      padding: 1.6mm 2.2mm;
+      vertical-align: top;
+      text-align: left;
+    }
+
+    th {
+      background: #e8f0f7;
+      color: #16375c;
+      font-weight: 650;
+    }
+
+    .meta th {
+      width: 42%;
+      background: #f4f7fb;
+    }
+
+    .note {
+      background: #f4f7fb;
+      border-left: 3px solid #16375c;
+      padding: 2.2mm 3mm;
+      margin: 2.5mm 0 3mm;
+      font-size: 10.5pt;
+    }
+
+    .warn {
+      background: #fff8e8;
+      border: 1px solid #e2c48a;
+      border-radius: 4px;
+      padding: 2.4mm 3mm;
+      margin: 3mm 0;
+      font-size: 10.5pt;
+    }
+
+    ul, ol {
+      margin: 1mm 0 2.5mm;
+      padding-left: 5mm;
+    }
+
+    li { margin: 0 0 1.1mm; }
+
+    /* Cover */
+    .eyebrow {
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 9.5pt;
+      color: #16375c;
+      font-weight: 700;
+    }
+
+    .rule {
+      height: 3px;
+      background: #16375c;
+      margin: 3mm 0 5mm;
+    }
+
+    .cover-kicker {
+      font-size: 11pt;
+      color: #3d4d60;
+      margin-bottom: 1mm;
+    }
+
+    .cover h1 {
+      font-size: 22pt;
+      line-height: 1.2;
+      color: #12283f;
+      margin-bottom: 2mm;
+    }
+
+    .app-name {
+      font-size: 16pt;
+      font-weight: 700;
+      color: #16375c;
+      margin-top: 4mm;
+    }
+
+    .app-sub {
+      font-size: 12pt;
+      color: #3d4d60;
+      margin-bottom: 3mm;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.6mm;
+      margin: 1.5mm 0 3mm;
+    }
+
+    .chip {
+      border: 1px solid #b7c7d8;
+      background: #f4f7fb;
+      border-radius: 99px;
+      padding: 0.6mm 2.4mm;
+      font-size: 9.5pt;
+      color: #16375c;
+    }
+
+    /* Wireframes */
+    .screen-block { margin-bottom: 4mm; }
+    .screen-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 4mm;
+      margin-bottom: 2mm;
+      align-items: baseline;
+    }
+    .screen-head strong { color: #16375c; }
+    .screen-head span { color: #3d4d60; font-size: 10pt; }
+
+    .wires {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4mm;
+      align-items: start;
+    }
+
+    .device {
+      border: 1.5px solid #1c2430;
+      border-radius: 8px;
+      background: #f7f9fb;
+      overflow: hidden;
+      min-height: 92mm;
+    }
+
+    .bar {
+      background: #16375c;
+      color: #fff;
+      font-size: 9pt;
+      padding: 1.4mm 2.4mm;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .bodypad { padding: 2.2mm; }
+
+    .statrow {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.6mm;
+      margin-bottom: 2mm;
+    }
+
+    .stat {
+      background: #fff;
+      border: 1px solid #c5d0dc;
+      border-radius: 4px;
+      padding: 1.6mm;
+      text-align: center;
+      font-size: 8.5pt;
+    }
+
+    .stat b {
+      display: block;
+      font-size: 12pt;
+      color: #16375c;
+    }
+
+    .sec {
+      font-size: 8pt;
+      font-weight: 700;
+      color: #5c6b7a;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin: 1.4mm 0 1mm;
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid #c5d0dc;
+      border-radius: 4px;
+      padding: 1.4mm 1.8mm;
+      margin-bottom: 1.3mm;
+      font-size: 8.5pt;
+    }
+
+    .card .top {
+      display: flex;
+      justify-content: space-between;
+      gap: 2mm;
+      font-weight: 650;
+    }
+
+    .muted { color: #5c6b7a; }
+
+    .tag {
+      display: inline-block;
+      border-radius: 3px;
+      padding: 0 1.2mm;
+      font-size: 7.5pt;
+      font-weight: 700;
+      background: #e8f0f7;
+      color: #16375c;
+    }
+
+    .tag.done { background: #e5f4ea; color: #1d6b3a; }
+    .tag.high { background: #fde8e4; color: #9c341f; }
+
+    .actions {
+      margin-top: 1mm;
+      display: flex;
+      gap: 1.2mm;
+    }
+
+    .mini {
+      border: 1px solid #8aa0b5;
+      border-radius: 3px;
+      padding: 0 1.3mm;
+      font-size: 7.5pt;
+      background: #fff;
+    }
+
+    .filters {
+      display: flex;
+      gap: 1.2mm;
+      margin-bottom: 1.6mm;
+    }
+
+    .filters span, .bottomnav span, .btn {
+      border: 1px solid #8aa0b5;
+      border-radius: 3px;
+      padding: 0.5mm 1.6mm;
+      font-size: 8pt;
+      background: #fff;
+    }
+
+    .filters .on, .bottomnav .on, .btn.primary {
+      background: #16375c;
+      color: #fff;
+      border-color: #16375c;
+    }
+
+    .field {
+      background: #fff;
+      border: 1px solid #c5d0dc;
+      border-radius: 3px;
+      padding: 1.1mm 1.6mm;
+      margin-bottom: 1.3mm;
+      font-size: 8.5pt;
+      color: #5c6b7a;
+    }
+
+    .field b { color: #1c2430; font-weight: 650; }
+
+    .btnrow {
+      display: flex;
+      justify-content: flex-end;
+      gap: 1.4mm;
+      margin-top: 1.5mm;
+    }
+
+    .bottomnav {
+      display: flex;
+      border-top: 1px solid #c5d0dc;
+      background: #fff;
+    }
+
+    .bottomnav span {
+      flex: 1;
+      text-align: center;
+      border: 0;
+      border-radius: 0;
+      padding: 1.5mm 0;
+      font-size: 8pt;
+    }
+
+    .ui-list {
+      margin: 1.5mm 0 0;
+      padding-left: 4.5mm;
+      font-size: 10pt;
+    }
+
+    /* Navigation diagram */
+    .flow {
+      display: grid;
+      grid-template-columns: 1fr 28mm 1fr;
+      gap: 2mm 2mm;
+      align-items: center;
+      margin: 2mm 0 3mm;
+    }
+
+    .node {
+      border: 1.5px solid #16375c;
+      background: #f4f7fb;
+      border-radius: 6px;
+      padding: 2.2mm 2.5mm;
+      text-align: center;
+    }
+
+    .node strong { display: block; color: #16375c; }
+    .node small { color: #3d4d60; }
+
+    .node.start { background: #16375c; color: #fff; }
+    .node.start strong, .node.start small { color: #fff; }
+
+    .arrow {
+      text-align: center;
+      font-size: 8.5pt;
+      color: #16375c;
+      line-height: 1.25;
+    }
+
+    .center-span {
+      grid-column: 1 / -1;
+    }
+
+    .flow-bottom {
+      display: grid;
+      grid-template-columns: 1fr 28mm 1fr;
+      gap: 2mm;
+      align-items: center;
+      margin-top: 1mm;
+    }
+
+    code, .mono {
+      font-family: "SF Mono", ui-monospace, Menlo, Consolas, monospace;
+      font-size: 9.5pt;
+    }
+
+    p.mono {
+      overflow-wrap: anywhere;
+      background: #f4f7fb;
+      border-radius: 3px;
+      padding: 1.4mm 2mm;
+    }
+
+    .nav-branches {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5mm;
+      margin: 2mm 0 3mm;
+    }
+
+    .branch {
+      border: 1px solid #d5dde6;
+      border-radius: 6px;
+      padding: 2.5mm;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 1.6mm;
+    }
+
+    .step-label {
+      text-align: center;
+      font-size: 8.5pt;
+      color: #16375c;
+      font-weight: 650;
+    }
+
+    .page.dense { font-size: 10.2pt; line-height: 1.38; }
+    .page.dense table { font-size: 9.2pt; margin: 1mm 0 2mm; }
+    .page.dense th, .page.dense td { padding: 1.15mm 1.8mm; }
+    .page.dense h2 { margin-bottom: 2mm; }
+    .page.dense h3 { margin: 2.2mm 0 1mm; }
+    .page.dense p { margin-bottom: 1.6mm; }
+    .page.dense ul { margin-bottom: 1.6mm; }
+    .checks {
+      columns: 2;
+      column-gap: 6mm;
+      font-size: 9pt;
+      margin: 0 0 2mm;
+      padding-left: 4.5mm;
+    }
+    .checks li { break-inside: avoid; margin: 0 0 1mm; }
+
+    .small { font-size: 10pt; color: #3d4d60; }
+
+    @media print {
+      body { background: #fff; }
+      .page {
+        margin: 0;
+        box-shadow: none;
+        width: 210mm;
+        min-height: 297mm;
+        height: 297mm;
+        overflow: hidden;
+        page-break-after: always;
+        break-after: page;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- PAGE 1 -->
+<article class="page cover">
+  <p class="eyebrow">Midterm assignment · Planning and design only</p>
+  <div class="rule"></div>
+  <p class="cover-kicker">Android 앱 프로젝트 기획·설계서<br>Midterm Project Planning &amp; Design</p>
+  <h1>Android Application<br>Project Planning &amp; Design</h1>
+  <p class="app-name">StudyMate</p>
+  <p class="app-sub">Study &amp; Assignment Manager</p>
+  <p>A plan for a simple Android app that helps one university student keep assignments, due dates, and exam details together on their phone.</p>
+
+  <table class="meta">
+    <tr>
+      <th>앱 이름 / App name</th>
+      <td>StudyMate — Study &amp; Assignment Manager</td>
+    </tr>
+    <tr>
+      <th>학번 / Student ID</th>
+      <td>2025621046</td>
+    </tr>
+    <tr>
+      <th>이름 / Student name</th>
+      <td>Subedi Anup</td>
+    </tr>
+    <tr>
+      <th>과목 / Course</th>
+      <td>Computer Software</td>
+    </tr>
+    <tr>
+      <th>GitHub account</th>
+      <td>anupsubedi968-tech<br><span class="mono">https://github.com/anupsubedi968-tech</span></td>
+    </tr>
+    <tr>
+      <th>GitHub Repository URL</th>
+      <td><span class="mono">https://github.com/anupsubedi968-tech/StudyMate</span><br>Planning document only. The Android app is not in this repository yet.</td>
+    </tr>
+    <tr>
+      <th>작성일 / Date</th>
+      <td>2026-10-27</td>
+    </tr>
+  </table>
+
+  <h3 style="margin-top:4mm;">Tools I plan to use</h3>
+  <div class="chips">
+    <span class="chip">Kotlin</span>
+    <span class="chip">Fragments</span>
+    <span class="chip">Navigation Component</span>
+    <span class="chip">RecyclerView</span>
+    <span class="chip">Room with SQLite</span>
+    <span class="chip">Git and GitHub</span>
+  </div>
+
+  <div class="warn">
+    <strong>Please read this before submitting.</strong>
+    The repository link is for this planning document. The Android app has not been built, run, or tested, and the app code is not on GitHub yet.
+  </div>
+
+  <footer class="pf">
+    <span>StudyMate · Planning &amp; Design</span>
+    <span>Page 1 of 8</span>
+  </footer>
+</article>
+
+<!-- PAGE 2 -->
+<article class="page">
+  <h2>1. 앱 소개 및 개발 목적 / Project Overview</h2>
+
+  <h3>1.1 앱을 한 문장으로 소개 / One-sentence description</h3>
+  <p>StudyMate is an Android app that lets a university student record assignments and exams, then see what is still pending and what is coming next.</p>
+
+  <h3>1.2 해결하려는 문제 / Problem to solve</h3>
+  <p>During a semester, due dates and exam details are easy to lose. A student may write an assignment in a notebook, keep another in a chat message, and remember an exam room only from a slide. When those notes are separate, a deadline can pass without a reminder in one place.</p>
+  <p>StudyMate is a plan to put that information in one app on the student’s own phone. The student can add an assignment, see it in a list, mark it completed when the work is done, and keep exam date, time, and location beside the coursework. The phone stores the data locally, so the lists are still there the next time the app opens.</p>
+
+  <h3>1.3 대상 사용자 및 이용 상황 / Target users and use cases</h3>
+  <p>The target user is a university student who takes several courses and wants a simple way to manage coursework and upcoming deadlines. The first version is for one person using their own phone.</p>
+  <ul>
+    <li>After class, the student adds an assignment with its subject, due date, and priority.</li>
+    <li>In the morning, the student opens the dashboard to see how many assignments are pending and which deadlines are closest.</li>
+    <li>When the work is finished, the student marks that assignment completed. The list and the counts update.</li>
+    <li>Before exam week, the student checks the exam screen for the subject, date, time, and room.</li>
+  </ul>
+  <div class="note">
+    The first version stores every row in a Room database on the phone. Accounts and sharing with classmates can wait for a later version, if there is time in the final project.
+  </div>
+
+  <h3>Planned scope for a student project</h3>
+  <p>The midterm only asks for the plan. The final-term project will continue from this design. The app will have four screens, two database tables, and the five features in the next section. That size is realistic for one student who has studied Kotlin, Fragments, Navigation, RecyclerView, Room, and Git.</p>
+
+  <h3>1.4 Final-term project and GitHub</h3>
+  <p>I will build the Android Studio project from this plan. When the app is complete and tested, I will push it to my existing GitHub account, <strong>anupsubedi968-tech</strong> (<span class="mono">https://github.com/anupsubedi968-tech</span>).</p>
+  <p>I checked that account on 27 October 2026. It already contained <span class="mono">CampusEquipmentRentalApp</span> and <span class="mono">NavigationPractice</span>. Those different projects were left unchanged.</p>
+  <p><strong>StudyMate repository URL:</strong> <span class="mono">https://github.com/anupsubedi968-tech/StudyMate</span></p>
+  <p>This repository now holds the midterm planning files. The Android Studio app is not there yet. After the app is built and tested, I will add that project to this same repository, update <span class="mono">README.md</span>, use an Android <span class="mono">.gitignore</span>, check for secrets, commit, and push. I will not delete the planning files or the other repositories.</p>
+
+  <footer class="pf">
+    <span>StudyMate · Planning &amp; Design</span>
+    <span>Page 2 of 8</span>
+  </footer>
+</article>
+
+<!-- PAGE 3 -->
+<article class="page">
+  <h2>2. 주요 기능 정의 / Core Features</h2>
+  <p class="small">Five features are planned. Each one names what the student does, what should happen, and which Android topic will be used.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width:7%;">No.</th>
+        <th style="width:22%;">기능명 / Feature</th>
+        <th>사용자 동작·기대 결과 / User action and result</th>
+        <th style="width:24%;">Android 기술 / Technology</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Add and edit an assignment</td>
+        <td>The student taps Add, or Edit on an existing row, fills in the title, subject, description, due date, and priority, then taps Save. The assignment is stored on the phone and shown in the list.</td>
+        <td>AssignmentFormFragment, Navigation, Room</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Show assignments in a list</td>
+        <td>The student opens the assignment screen and scrolls. Each row shows the title, subject, due date, priority, and whether it is pending or completed. Filter buttons show All, Pending, or Completed.</td>
+        <td>RecyclerView, Adapter, AssignmentListFragment</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Mark completed or delete</td>
+        <td>The student taps Complete on a pending row, or taps Delete and confirms. The status changes, or the row is removed. The list and the dashboard counts update.</td>
+        <td>Room update and delete, RecyclerView</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>Manage exam schedules</td>
+        <td>The student enters a subject, date, time, and location, then taps Save. The exam appears in the list. Edit and Delete change or remove that exam.</td>
+        <td>ExamScheduleFragment, RecyclerView, Room</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>Dashboard summary</td>
+        <td>The student opens the app and lands on the dashboard. It shows the number of pending assignments, the number of completed assignments, and a short list of upcoming deadlines and the next exam.</td>
+        <td>DashboardFragment, Room queries, RecyclerView</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>2.1 가장 중요한 기능 및 이유 / Most important feature and why</h3>
+  <p>The most important feature is adding an assignment and seeing it again in the list with its due date. That is the main reason to open the app. If save and list work, the student can rely on StudyMate instead of scattered notes. Marking an item completed, the dashboard counts, and the exam list all depend on the same idea: save a row on the phone, then read it back.</p>
+  <p>A simple check belongs with this feature. The title, subject, and due date should be filled in before Save. An empty title would make the list hard to understand.</p>
+
+  <h3>2.2 RecyclerView 사용 계획 / List display plan</h3>
+  <p>RecyclerView is the list tool for three screens. The Adapter creates one row layout and fills it for each item from the database.</p>
+  <ul>
+    <li><strong>AssignmentListFragment</strong> is the main list. A row shows title, subject, due date, priority (High, Normal, or Low), and the status Pending or Completed. The row includes Complete, Edit, and Delete. Three filter buttons choose All, Pending, or Completed. Pending means <span class="mono">isCompleted = 0</span>. Completed means <span class="mono">isCompleted = 1</span>.</li>
+    <li><strong>ExamScheduleFragment</strong> lists exams. A row shows subject, exam date, exam time, and location, with Edit and Delete.</li>
+    <li><strong>DashboardFragment</strong> uses a short RecyclerView for the nearest pending assignments, sorted by due date, plus the next exam. An empty list shows “No assignments yet,” and the list refreshes after each save or delete.</li>
+  </ul>
+
+  <footer class="pf">
+    <span>StudyMate · Planning &amp; Design</span>
+    <span>Page 3 of 8</span>
+  </footer>
+</article>
+
+<!-- PAGE 4 -->
+<article class="page">
+  <h2>3. 화면 구성 설계 / Screen Wireframes</h2>
+  <p class="small">Four screens are planned. These drawings are sketches of the layout, not screenshots of a finished app. Sample words such as “Lab report” show the kind of text a row would hold.</p>
+
+  <div class="screen-block">
+    <div class="screen-head">
+      <strong>화면 1 / Screen 1 — DashboardFragment</strong>
+      <span>Role: summary of pending work, completed work, and what is due soon</span>
+    </div>
+    <div class="wires">
+      <div class="device" aria-hidden="true">
+        <div class="bar"><span>StudyMate</span><span>Home</span></div>
+        <div class="bodypad">
+          <div class="statrow">
+            <div class="stat">Pending<b>3</b></div>
+            <div class="stat">Completed<b>5</b></div>
+          </div>
+          <div class="sec">Upcoming deadlines</div>
+          <div class="card">
+            <div class="top"><span>Lab report</span><span class="tag high">High</span></div>
+            <div class="muted">Computer Science · 2026-11-12 · Pending</div>
+          </div>
+          <div class="card">
+            <div class="top"><span>Reading quiz</span><span class="tag">Normal</span></div>
+            <div class="muted">English · 2026-11-14 · Pending</div>
+          </div>
+          <div class="sec">Next exam</div>
+          <div class="card">
+            <div class="top"><span>Computer Science</span><span class="tag">Exam</span></div>
+            <div class="muted">2026-12-10 · 09:00 · Room 304</div>
+          </div>
+        </div>
+        <div class="bottomnav">
+          <span class="on">Dashboard</span>
+          <span>Assignments</span>
+          <span>Exams</span>
+        </div>
+      </div>
+      <div>
+        <p><strong>What the student can do here</strong></p>
+        <ul class="ui-list">
+          <li>See how many assignments are pending and how many are completed.</li>
+          <li>Read the closest pending due dates without opening the full list.</li>
+          <li>See the next exam’s subject, date, time, and location.</li>
+          <li>Move to Assignments or Exams with the buttons or the bottom navigation.</li>
+        </ul>
+        <p><strong>주요 UI 요소 / Main UI elements:</strong> two count boxes, a short upcoming list (RecyclerView), a next-exam card, and bottom navigation for Dashboard, Assignments, and Exams.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="screen-block">
+    <div class="screen-head">
+      <strong>화면 2 / Screen 2 — AssignmentFormFragment</strong>
+      <span>Role: add a new assignment or edit an existing one</span>
+    </div>
+    <div class="wires">
+      <div class="device" aria-hidden="true">
+        <div class="bar"><span>StudyMate</span><span>Back</span></div>
+        <div class="bodypad">
+          <div class="sec">Add assignment</div>
+          <div class="field"><b>Title</b><br>Lab report</div>
+          <div class="field"><b>Subject</b><br>Computer Science</div>
+          <div class="field"><b>Description</b><br>Write up the week 9 lab</div>
+          <div class="field"><b>Due date</b><br>2026-11-12</div>
+          <div class="field"><b>Priority</b><br>High &nbsp;▾</div>
+          <div class="btnrow">
+            <span class="btn">Cancel</span>
+            <span class="btn primary">Save</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <p><strong>What the student can do here</strong></p>
+        <ul class="ui-list">
+          <li>Type the assignment title, subject, and a short description.</li>
+          <li>Choose a due date and a priority: High, Normal, or Low.</li>
+          <li>Tap Save to write the row, or Cancel to leave without saving.</li>
+          <li>When the screen is opened with Edit, the same fields show the saved values and the title becomes “Edit assignment.”</li>
+        </ul>
+        <p><strong>주요 UI 요소 / Main UI elements:</strong> text fields for title, subject, and description; a due-date field; a priority selector; Save and Cancel buttons.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer class="pf">
+    <span>StudyMate · Planning &amp; Design</span>
+    <span>Page 4 of 8</span>
+  </footer>
+</article>
+
+<!-- PAGE 5 -->
+<article class="page">
+  <h2>3. 화면 구성 설계 / Screen Wireframes <span class="ko">(continued)</span></h2>
+
+  <div class="screen-block">
+    <div class="screen-head">
+      <strong>화면 3 / Screen 3 — AssignmentListFragment</strong>
+      <span>Role: view, filter, edit, delete, and complete assignments</span>
+    </div>
+    <div class="wires">
+      <div class="device" aria-hidden="true">
+        <div class="bar"><span>Assignments</span><span>+ Add</span></div>
+        <div class="bodypad">
+          <div class="filters">
+            <span class="on">All</span>
+            <span>Pending</span>
+            <span>Completed</span>
+          </div>
+          <div class="card">
+            <div class="top"><span>Lab report</span><span class="tag high">High</span></div>
+            <div class="muted">Computer Science · Due 2026-11-12</div>
+            <div class="actions">
+              <span class="mini">Complete</span>
+              <span class="mini">Edit</span>
+              <span class="mini">Delete</span>
+            </div>
+          </div>
+          <div class="card">
+            <div class="top"><span>Problem set 3</span><span class="tag done">Completed</span></div>
+            <div class="muted">Math · Due 2026-11-02</div>
+            <div class="actions">
+              <span class="mini">Edit</span>
+              <span class="mini">Delete</span>
+            </div>
+          </div>
+          <div class="card">
+            <div class="top"><span>Reading quiz</span><span class="tag">Normal</span></div>
+            <div class="muted">English · Due 2026-11-14</div>
+            <div class="actions">
+              <span class="mini">Complete</span>
+              <span class="mini">Edit</span>
+              <span class="mini">Delete</span>
+            </div>
+          </div>
+        </div>
+        <div class="bottomnav">
+          <span>Dashboard</span>
+          <span class="on">Assignments</span>
+          <span>Exams</span>
+        </div>
+      </div>
+      <div>
+        <p><strong>What the student can do here</strong></p>
+        <ul class="ui-list">
+          <li>Scroll every saved assignment in a RecyclerView.</li>
+          <li>Filter the list to All, Pending, or Completed.</li>
+          <li>Tap Add to open an empty form.</li>
+          <li>Tap Edit to open the form with that assignment loaded.</li>
+          <li>Tap Complete to set the row as completed, or Delete and confirm to remove it.</li>
+        </ul>
+        <p><strong>주요 UI 요소 / Main UI elements:</strong> filter buttons, RecyclerView rows, Complete / Edit / Delete actions, an Add button, and bottom navigation.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="screen-block">
+    <div class="screen-head">
+      <strong>화면 4 / Screen 4 — ExamScheduleFragment</strong>
+      <span>Role: view and manage exam date, time, subject, and location</span>
+    </div>
+    <div class="wires">
+      <div class="device" aria-hidden="true">
+        <div class="bar"><span>Exam schedule</span><span></span></div>
+        <div class="bodypad">
+          <div class="sec">Add or edit an exam</div>
+          <div class="field"><b>Subject</b> · Computer Science</div>
+          <div class="field"><b>Date</b> · 2026-12-10 &nbsp;&nbsp; <b>Time</b> · 09:00</div>
+          <div class="field"><b>Location</b> · Room 304</div>
+          <div class="btnrow" style="margin-bottom:2mm;">
+            <span class="btn">Clear</span>
+            <span class="btn primary">Save exam</span>
+          </div>
+          <div class="sec">Saved exams</div>
+          <div class="card">
+            <div class="top"><span>Computer Science</span><span class="tag">09:00</span></div>
+            <div class="muted">2026-12-10 · Room 304</div>
+            <div class="actions">
+              <span class="mini">Edit</span>
+              <span class="mini">Delete</span>
+            </div>
+          </div>
+          <div class="card">
+            <div class="top"><span>English</span><span class="tag">13:00</span></div>
+            <div class="muted">2026-12-12 · Hall B</div>
+            <div class="actions">
+              <span class="mini">Edit</span>
+              <span class="mini">Delete</span>
+            </div>
+          </div>
+        </div>
+        <div class="bottomnav">
+          <span>Dashboard</span>
+          <span>Assignments</span>
+          <span class="on">Exams</span>
+        </div>
+      </div>
+      <div>
+        <p><strong>What the student can do here</strong></p>
+        <ul class="ui-list">
+          <li>Enter the subject, exam date, exam time, and location in the form at the top.</li>
+          <li>Tap Save exam to store a new row, or to update the exam that is being edited.</li>
+          <li>See all saved exams in a RecyclerView.</li>
+          <li>Tap Edit to load an exam into the form, or Delete to remove it after a confirmation.</li>
+        </ul>
+        <p>Exam add and edit stay on this screen so the app does not need a fifth fragment. Assignment add and edit use their own form because an assignment has more fields.</p>
+        <p><strong>주요 UI 요소 / Main UI elements:</strong> a short input form, Save and Clear buttons, a RecyclerView of exams, Edit and Delete actions, and bottom navigation.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer class="pf">
+    <span>StudyMate · Planning &amp; Design</span>
+    <span>Page 5 of 8</span>
+  </footer>
+</article>
+
+<!-- PAGE 6 -->
+<article class="page">
+  <h2>4. 화면 이동 흐름 / Navigation Flow</h2>
+  <p>The Navigation Component will connect the four fragments. <strong>DashboardFragment</strong> is the start destination. A bottom navigation bar moves among the dashboard, the assignment list, and the exam schedule. The assignment form is opened from the list, then returns to the list.</p>
+
+  <div class="node start">
+    <strong>DashboardFragment</strong>
+    <small>Start screen. Bottom navigation also jumps among Dashboard, Assignments, and Exams.</small>
+  </div>
+  <div class="nav-branches">
+    <div class="branch">
+      <div class="step-label">1. Tap Assignments</div>
+      <div class="node">
+        <strong>AssignmentListFragment</strong>
+        <small>Full list, filters, Complete, Edit, Delete</small>
+      </div>
+      <div class="step-label">2. Tap Add or Edit</div>
+      <div class="node">
+        <strong>AssignmentFormFragment</strong>
+        <small>Empty form for Add. Edit passes assignmentId.</small>
+      </div>
+      <div class="step-label">3. Save or Cancel returns to the list</div>
+    </div>
+    <div class="branch">
+      <div class="step-label">1. Tap Exams</div>
+      <div class="node">
+        <strong>ExamScheduleFragment</strong>
+        <small>Form and exam list on the same screen</small>
+      </div>
+      <div class="note" style="margin:0;">
+        Save, Edit, and Delete stay on this screen and refresh the exam list. This screen does not open the assignment form.
+      </div>
+    </div>
+  </div>
+
+  <h3>화면 이동 설명 / Explain the transitions</h3>
+  <ol>
+    <li><strong>App open → DashboardFragment.</strong> The student sees pending and completed counts, upcoming assignment deadlines, and the next exam.</li>
+    <li><strong>Dashboard → AssignmentListFragment.</strong> The student taps Assignments in the bottom navigation, or the assignments shortcut on the dashboard.</li>
+    <li><strong>AssignmentListFragment → AssignmentFormFragment.</strong> Add opens a blank form. Edit passes the assignment id and fills the form with that row.</li>
+    <li><strong>AssignmentFormFragment → AssignmentListFragment.</strong> Save writes the row and returns to the list. Cancel returns without writing. The system Back button does the same job as Cancel.</li>
+    <li><strong>Dashboard or bottom nav → ExamScheduleFragment.</strong> The student views the exam list and uses the form on that screen to add or edit an exam. Save stays on this screen and refreshes the list.</li>
+    <li><strong>Bottom navigation</strong> can move directly among Dashboard, Assignments, and Exams. From the form, the student returns to the list first.</li>
+  </ol>
+
+  <div class="note">
+    The navigation graph will contain these fragments and the actions above. Passing <span class="mono">assignmentId</span> is the only argument planned for the first version. A new assignment does not send an id. An edited assignment does.
+  </div>
+
+  <footer class="pf">
+    <span>StudyMate · Planning &amp; Design</span>
+    <span>Page 6 of 8</span>
+  </footer>
+</article>
+
+<!-- PAGE 7 -->
+<article class="page">
+  <h2>5. Room SQLite 데이터베이스 설계 / Database Design</h2>
+  <p>All data stays on the phone in one local SQLite database. Room will create the file the first time the app opens the database. Two tables are enough: one for assignments and one for exams. A third table is not planned, because the app does not store user accounts or a separate subject list.</p>
+  <p><strong>DB 이름 / Database name:</strong> <span class="mono">studymate_database</span></p>
+
+  <p><strong>테이블 이름 / Table 1 name:</strong> <span class="mono">assignments</span></p>
+  <table>
+    <thead>
+      <tr>
+        <th>컬럼명 / Column</th>
+        <th>타입 / Type</th>
+        <th>키·제약 / Key</th>
+        <th>설명 / Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="mono">assignmentId</td>
+        <td>INTEGER</td>
+        <td>PK, auto-generated</td>
+        <td>Unique number for one assignment. The student does not type this.</td>
+      </tr>
+      <tr>
+        <td class="mono">title</td>
+        <td>TEXT</td>
+        <td>NOT NULL</td>
+        <td>Assignment name shown in the list.</td>
+      </tr>
+      <tr>
+        <td class="mono">subject</td>
+        <td>TEXT</td>
+        <td>NOT NULL</td>
+        <td>Course or subject name.</td>
+      </tr>
+      <tr>
+        <td class="mono">description</td>
+        <td>TEXT</td>
+        <td></td>
+        <td>Optional notes about the work.</td>
+      </tr>
+      <tr>
+        <td class="mono">dueDate</td>
+        <td>TEXT</td>
+        <td>NOT NULL</td>
+        <td>Due date stored as text, such as 2026-11-12, so it can be sorted.</td>
+      </tr>
+      <tr>
+        <td class="mono">priority</td>
+        <td>TEXT</td>
+        <td>NOT NULL</td>
+        <td>High, Normal, or Low.</td>
+      </tr>
+      <tr>
+        <td class="mono">isCompleted</td>
+        <td>INTEGER</td>
+        <td>NOT NULL</td>
+        <td>0 = pending, 1 = completed. SQLite has no boolean type, so a number is used.</td>
+      </tr>
+    </tbody>
+  </table>
+  <p><strong>Example record</strong> (a sample of one future row, not data from a running app):</p>
+  <p class="mono">assignmentId=1, title=Lab report, subject=Computer Science, description=Write up the week 9 lab, dueDate=2026-11-12, priority=High, isCompleted=0</p>
+
+  <p><strong>테이블 이름 / Table 2 name:</strong> <span class="mono">exams</span></p>
+  <table>
+    <thead>
+      <tr>
+        <th>컬럼명 / Column</th>
+        <th>타입 / Type</th>
+        <th>키·제약 / Key</th>
+        <th>설명 / Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="mono">examId</td>
+        <td>INTEGER</td>
+        <td>PK, auto-generated</td>
+        <td>Unique number for one exam.</td>
+      </tr>
+      <tr>
+        <td class="mono">subject</td>
+        <td>TEXT</td>
+        <td>NOT NULL</td>
+        <td>Exam subject.</td>
+      </tr>
+      <tr>
+        <td class="mono">examDate</td>
+        <td>TEXT</td>
+        <td>NOT NULL</td>
+        <td>Exam date as text, such as 2026-12-10.</td>
+      </tr>
+      <tr>
+        <td class="mono">examTime</td>
+        <td>TEXT</td>
+        <td>NOT NULL</td>
+        <td>Start time as text, such as 09:00.</td>
+      </tr>
+      <tr>
+        <td class="mono">location</td>
+        <td>TEXT</td>
+        <td>NOT NULL</td>
+        <td>Room or building.</td>
+      </tr>
+    </tbody>
+  </table>
+  <p><strong>Example record</strong> (a sample of one future row, not data from a running app):</p>
+  <p class="mono">examId=1, subject=Computer Science, examDate=2026-12-10, examTime=09:00, location=Room 304</p>
+
+  <p style="margin-top:3mm;"><strong>테이블 이름 / Table 3:</strong> Not used. Assignments and exams are separate lists, so this version does not add another table.</p>
+
+  <footer class="pf">
+    <span>StudyMate · Planning &amp; Design</span>
+    <span>Page 7 of 8</span>
+  </footer>
+</article>
+
+<!-- PAGE 8 -->
+<article class="page dense">
+  <h2>6. Room 및 데이터 처리 계획 / Room &amp; Data Operations</h2>
+  <p>Room helps the app store rows in a SQLite file on the phone. The classes below describe the tables and the actions. Room creates the file and does the saving and loading.</p>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:27%;">구성 요소 / Component</th>
+        <th>예정 역할 / Planned responsibility</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Entity</td>
+        <td><span class="mono">Assignment</span> is a Kotlin class with the same fields as the assignments table. <span class="mono">Exam</span> matches the exams table. Each object is one row. The id is the primary key, and Room fills it in when a row is added.</td>
+      </tr>
+      <tr>
+        <td>DAO</td>
+        <td><span class="mono">AssignmentDao</span> inserts, updates, deletes, and reads assignments, and can set <span class="mono">isCompleted</span>. <span class="mono">ExamDao</span> does the same for exams. A fragment calls these functions. Room prepares the SQL.</td>
+      </tr>
+      <tr>
+        <td>AppDatabase</td>
+        <td><span class="mono">StudyMateDatabase</span> is the Room database class. It lists both entities, provides both DAOs, and uses the file name <span class="mono">studymate_database</span>.</td>
+      </tr>
+      <tr>
+        <td>Repository (optional)</td>
+        <td>The first version calls the DAO from the fragment. A repository can be added later if several screens share the same save or load code.</td>
+      </tr>
+      <tr>
+        <td>Fragment</td>
+        <td>The form collects input. The lists show rows. The dashboard shows counts and the nearest dates. After a change, the screen reads the table again.</td>
+      </tr>
+    </tbody>
+  </table>
+  <p><strong>데이터 처리 흐름 / Data flow:</strong> Save checks the title, subject, and due date, then <span class="mono">AssignmentDao</span> inserts or updates a row in <span class="mono">assignments</span>. The list reads those rows into the RecyclerView. Complete sets <span class="mono">isCompleted</span> to 1. Delete removes the row after confirmation. Exams use <span class="mono">ExamDao</span> the same way. The dashboard counts pending and completed rows and reads the nearest due dates. The SQLite file stays on the phone after the app closes.</p>
+
+  <h2>7. 개발 일정 및 제출 계획 / Development Schedule</h2>
+  <p class="small">This schedule is for building the app later, as the final-term project. None of these steps is done yet.</p>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:20%;">기간 / Week</th>
+        <th>구현할 기능 / Work plan</th>
+        <th style="width:36%;">완료 기준 / Done when</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Weeks 9–10</td>
+        <td>Create the project and the four fragment layouts.</td>
+        <td>All four screens open and follow the wireframes.</td>
+      </tr>
+      <tr>
+        <td>Weeks 11–12</td>
+        <td>Add Navigation and RecyclerView. Use a few temporary rows first.</td>
+        <td>Screens connect, lists scroll, and Add and Edit open the form.</td>
+      </tr>
+      <tr>
+        <td>Weeks 13–14</td>
+        <td>Add entities, DAOs, and StudyMateDatabase. Save and load with Room.</td>
+        <td>Data remains after the app is closed and opened again.</td>
+      </tr>
+      <tr>
+        <td>Weeks 15–16</td>
+        <td>Test the app, then add it to the StudyMate repository. Leave the other repositories unchanged.</td>
+        <td>The app code is visible in the existing StudyMate repository.</td>
+      </tr>
+    </tbody>
+  </table>
+  <p><strong>Git and GitHub plan.</strong> The planning files are at <span class="mono">https://github.com/anupsubedi968-tech/StudyMate</span>. The Android app is not uploaded yet. After it is built and tested, it will be added to this same repository.</p>
+
+  <h2>8. 최종 점검 / Submission Checklist</h2>
+  <ul class="checks">
+    <li>앱 목적 및 대상 사용자 설명 — Section 1</li>
+    <li>주요 기능 3개 이상 (brief: 4 or more) — five features, Section 2</li>
+    <li>화면 설계 4개 이상 — Section 3</li>
+    <li>Navigation 흐름도 — Section 4</li>
+    <li>RecyclerView 활용 계획 — Section 2.2</li>
+    <li>Room 테이블, with PK and data types — two tables, Section 5</li>
+    <li>개발 일정과 GitHub URL — Section 7 and Section 1.4</li>
+    <li>PDF 변환 및 파일명 — export still needed</li>
+  </ul>
+  <p><strong>제출 파일명 / Filename after export:</strong> <span class="mono">Midterm_2025621046_SubediAnup.pdf</span></p>
+  <p><strong>AI 활용 여부 및 활용 내용 / AI tools used:</strong> Cursor (Grok) drafted this plan, added my details, created the StudyMate repository, and uploaded the planning files. It did not build or test the Android app.</p>
+
+  <footer class="pf">
+    <span>StudyMate · Planning &amp; Design</span>
+    <span>Page 8 of 8</span>
+  </footer>
+</article>
+
+</body>
+</html>
